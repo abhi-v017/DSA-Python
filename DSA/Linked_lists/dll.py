@@ -7,7 +7,7 @@ class Node:
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
-    def inserathead(self, val):
+    def inserathead(self, val): #insert head
         new_node = Node(val)
         if not self.head:
             self.head = new_node
@@ -15,7 +15,7 @@ class DoublyLinkedList:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
-    def insertatend(self, val):
+    def insertatend(self, val): #insert at end
         new_node = Node(val)
         if not self.head:
             self.head = new_node
@@ -25,7 +25,7 @@ class DoublyLinkedList:
                 current = current.next
             current.next = new_node
             new_node.prev = current
-    def insertatposition(self, val, position):
+    def insertatposition(self, val, position): #insert at position
         new_node = Node(val)
         if position == 0:
             self.inserathead(val)
@@ -44,25 +44,25 @@ class DoublyLinkedList:
                 if current.next:
                     current.next.prev = new_node
                     current.next = new_node
-    def traverse_forward(self):
+    def traverse_forward(self): #traverse
         current = self.head
         while current:
             print(current.val, end=" ")
             current = current.next
         print()
-    def removehead(self):
+    def removehead(self): #remove head
         if not self.head:
             print("empty list")
         self.head = self.head.next
         self.head.prev = None
-    def removelast(self):
+    def removelast(self): #remove last
         if not self.head:
             print("empty list")
         current = self.head
         while current.next is not None:
             current = current.next
         current.prev.next = None
-    def removefromposition(self, position):
+    def removefromposition(self, position): #remove position
         if not self.head:
             return
         if position == 0:
@@ -80,6 +80,7 @@ class DoublyLinkedList:
         current.next = node_to_remove.next
         if node_to_remove.next:
             node_to_remove.next.prev = current
+            
 dll = DoublyLinkedList()
 dll.inserathead(3)
 dll.inserathead(2)
@@ -95,4 +96,3 @@ dll.removehead()
 dll.traverse_forward()
 dll.removelast()
 dll.traverse_forward()
-
